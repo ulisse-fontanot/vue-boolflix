@@ -20,7 +20,7 @@
           </header>
 
           <div v-for="film in films" class="box">
-            <img :src="films.backdrop_path" alt="copertina">
+            <img :src="'https://image.tmdb.org/t/p/w500' + film.backdrop_path" alt="copertina">
             <h3 class="title">{{film.title}}</h3>
             <h3 class="originalTitle">{{film.original_title}}</h3>
             <span class="lingua">{{film.original_language}}</span>
