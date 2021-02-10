@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>ex-dischi-musicali</title>
+        <title>boolflix</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
@@ -14,15 +14,15 @@
         <div class="boxs-container container" id="app">
           <header>
               <div class="container">
-                <input type="text" v-model="query">
+                <input type="text" v-model="query"  v-on:keyup="searchFilm">
                 <button @click="searchFilm" type="button" name="button">CERCA</button>
               </div>
           </header>
 
           <div v-for="film in films" class="box">
-            <img :src="film.poster" alt="copertina">
-            <h3 class="title">{{film.name}}</h3>
-            <h3 class="originalTitle">{{film.original_name}}</h3>
+            <img :src="films.backdrop_path" alt="copertina">
+            <h3 class="title">{{film.title}}</h3>
+            <h3 class="originalTitle">{{film.original_title}}</h3>
             <span class="lingua">{{film.original_language}}</span>
             <span class="voto">{{film.vote_average}}</span>
           </div>
