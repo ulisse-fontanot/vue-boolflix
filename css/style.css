@@ -52,15 +52,16 @@ header img {
 }
 
 .box h3 {
-    margin: 20px 0;
+    margin: 10px 0;
     color: white;
     font-size: 22px;
     text-transform: uppercase;
 }
 
-.box span.lingua {
-    color: grey;
-    font-size: 20px;
+.box .img-lingua {
+  height: 20px;
+  margin: 10px;
+  color: white;
 }
 
 .box span.voto {
