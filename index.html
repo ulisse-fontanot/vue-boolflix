@@ -6,7 +6,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -25,7 +26,10 @@
             <h3 class="title">{{film.title}}</h3>
             <h3 class="originalTitle">{{film.original_title}}</h3>
             <span class="lingua">{{film.original_language}}</span>
-            <span class="voto">{{film.vote_average}}</span>
+            <span class="voto">
+              <i v-for="star in (film.vote_average)" class="fas fa-star gialla"></i>
+              <i v-for="star in (5 - film.vote_average)" class="fas fa-star"></i>
+            </span>
           </div>
         </div>
 
