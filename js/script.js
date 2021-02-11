@@ -23,6 +23,7 @@ var app = new Vue({
         result.data.results.forEach(item => {
           item.vote_average = Math.round(item.vote_average / 2);
         });
+        this.query = '';
         // -----------------FUNZIONI---------------------------
       })
       .catch((error) => console.log('errore'));
@@ -45,6 +46,7 @@ var app = new Vue({
       result.data.results.forEach(item => {
         item.vote_average = Math.round(item.vote_average / 2);
       });
+      this.query = '';
 
       console.log(result.data);
       // -----------------FUNZIONI---------------------------

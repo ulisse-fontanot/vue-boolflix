@@ -11,63 +11,122 @@ body {
 }
 
 .container {
-    width: 1070px;
+    width: 70vw;
     height: 100%;
     margin: 0 auto;
+    padding: 20px;
 }
 
 header {
     width: 100%;
-    height: 70px;
+    height: 100px;
+    padding: 0px 30px;
     background: rgb(46, 58, 70);
+    border: 3px solid rgb(19, 221, 45);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 header img {
     height: 50px;
     margin-top: 10px;
 }
 
-.boxs-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 50px 0;
+header h1{
+  font-size: 50px;
+  color: rgb(19, 221, 45);
+}
+
+header .header-right{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+header input{
+  height: 50%;
+  padding: 5px 20px;
+  border: 2px solid rgb(19, 221, 45);
+  margin: 0 10px;
+}
+
+header button{
+  height: 40%;
+  padding: 2px 20px;
+  border: 2px solid rgb(19, 221, 45);
+  background-color: #1E2D3B;
+  color: white;
+}
+
+header button:hover{
+  cursor: pointer;
+  background-color: rgb(46, 58, 70);
+}
+
+main{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .box {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    flex-basis: 200px;
-    padding: 20px;
-    margin: 10px 20px;
-    height: 360px;
-    background: rgb(46, 58, 70);
-    text-align: center;
+    margin: 20px;
+    border: 2px solid rgb(19, 221, 45);
+    position: relative;
 }
 
 .box img {
-    max-width: 100%;
+  width: 342px;
 }
 
-.box h3 {
+.nascosta{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  padding: 15px;
+  background-color: rgba(4, 33, 15, 0.81);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box:hover .nascosta{
+  display: flex;
+  cursor: pointer;
+}
+
+.box h2 {
     margin: 10px 0;
     color: white;
     font-size: 22px;
     text-transform: uppercase;
+    text-align: center;
 }
 
-.box .img-lingua {
+.box .nascosta .img-lingua {
   height: 20px;
+  width: 30px;
   margin: 10px;
   color: white;
+  text-align: center;
 }
 
 .box span.voto {
   color: grey;
+  text-align: center;
 }
 
 .box span.voto .gialla{
   color: yellow;
+  padding-left: 4px;
+}
+
+.box .nascosta p{
+  width: 100%;
+  height: 250px;
+  overflow-y: scroll;
+  color: white;
 }
