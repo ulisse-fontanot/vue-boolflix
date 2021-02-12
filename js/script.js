@@ -26,8 +26,6 @@ var app = new Vue({
           item.vote_average = Math.round(item.vote_average / 2);
         });
         this.query = '';
-
-        console.log(result.data);
         // -----------------FUNZIONI---------------------------
       })
       .catch((error) => console.log('errore'));
@@ -43,17 +41,13 @@ var app = new Vue({
         }
       })
       .then((result) => {
-      this.serie = result.data.results;
-      // ----------------FUNZIONI----------------------------
-      this.media = this.films.concat(this.serie);
-
-      result.data.results.forEach(item => {
-        item.vote_average = Math.round(item.vote_average / 2);
-      });
-      this.query = '';
-
-      console.log(result.data);
-      // -----------------FUNZIONI---------------------------
+        this.serie = result.data.results;
+        // ----------------FUNZIONI----------------------------
+        result.data.results.forEach(item => {
+          item.vote_average = Math.round(item.vote_average / 2);
+        });
+        this.query = '';
+        // -----------------FUNZIONI---------------------------
       })
       .catch((error) => console.log('errore'));
       //-----------SERIE TV---------------
@@ -66,7 +60,7 @@ var app = new Vue({
         }
       })
       .then((result) => {
-      this.genreFilms = result.data.results;
+        this.genreFilms = result.data.results;
       })
       .catch((error) => console.log('errore'));
       //-----------GENERI FILM---------------
@@ -83,23 +77,28 @@ var app = new Vue({
       })
       .catch((error) => console.log('errore'));
       //-----------GENERI SERIE TV---------------
-    }
-  },
-  mounted(){
-    this.films.forEach((item, index) => {
-      for (var i = 0; i < genreFilms.length; i++) {
-        if (item.genre_ids[0] = (this.genreFilms[i].id)) {
-          item.genre_ids[0] = this.genreFilms[i].name;
-        }
-      }
-    });
 
-    this.serie.forEach((item, index) => {
-      for (var i = 0; i < genreFilms.length; i++) {
-        if (item.genre_ids[0] = (this.genreSerie[i].id)) {
-          item.genre_ids[0] = this.genreSerie[i].name;
-        }
-      }
-    });
+      this.films.forEach((film, index) => {
+        film.genre_ids.forEach((id, i) => {
+          if (id = this.genreFilms.id) {
+            id = this.genreFilms.name;
+          }
+        });
+        this.$forceUpdate()
+      });
+
+      this.serie.forEach((tv, index) => {
+        tv.genre_ids.forEach((id, i) => {
+          if (id = this.genreSerie.id) {
+            id = this.genreSerie.name;
+          }
+        });
+        this.$forceUpdate()
+      });
+
+      this.media = this.films.concat(this.serie);
+
+      console.log(this.media);
+    }
   }
 });
