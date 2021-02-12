@@ -64,9 +64,11 @@ var app = new Vue({
         this.genreFilms = result.data.genres;
         this.films.forEach((film, index) => {
           film.genre_ids.forEach((id, i) => {
-            if (id == this.genreFilms.id) {
-              id = this.genreFilms.name;
-            }
+            this.genreFilms.forEach((genere, i) => {
+              if (id == genere.id) {
+                id = genere.name;
+              }
+            });
           });
           this.$forceUpdate()
         });
@@ -87,9 +89,11 @@ var app = new Vue({
         this.genreSerie = result.data.genres;
         this.serie.forEach((tv, index) => {
           tv.genre_ids.forEach((id, i) => {
-            if (id == this.genreSerie.id) {
-              id = this.genreSerie.name;
-            }
+            this.genreSerie.forEach((genere, i) => {
+              if (id == genere.id) {
+                id = genere.name;
+              }
+            });
           });
           this.$forceUpdate()
         });
