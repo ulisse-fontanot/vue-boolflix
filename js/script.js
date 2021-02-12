@@ -4,11 +4,13 @@ var app = new Vue({
     media: [],
     films: [],
     serie: [],
+    genreSerie: [],
+    genreFilms: [],
     query: ""
   },
   methods:{
     searchFilm(){
-      //-----------FILM---------------
+      // -----------FILM---------------
       axios
       .get("https://api.themoviedb.org/3/search/movie", {
         params: {
@@ -24,6 +26,8 @@ var app = new Vue({
           item.vote_average = Math.round(item.vote_average / 2);
         });
         this.query = '';
+
+        console.log(result.data);
         // -----------------FUNZIONI---------------------------
       })
       .catch((error) => console.log('errore'));
@@ -54,6 +58,48 @@ var app = new Vue({
       .catch((error) => console.log('errore'));
       //-----------SERIE TV---------------
 
+      //-----------GENERI FILM---------------
+      axios
+      .get("https://api.themoviedb.org/3/genre/movie/list", {
+        params: {
+          api_key: '533355437691153b9c338305b62a7ad3'
+        }
+      })
+      .then((result) => {
+      this.genreFilms = result.data.results;
+      })
+      .catch((error) => console.log('errore'));
+      //-----------GENERI FILM---------------
+
+      //-----------GENERI SERIE TV---------------
+      axios
+      .get("https://api.themoviedb.org/3/genre/tv/list", {
+        params: {
+          api_key: '533355437691153b9c338305b62a7ad3'
+        }
+      })
+      .then((result) => {
+      this.genreSerie = result.data.results;
+      })
+      .catch((error) => console.log('errore'));
+      //-----------GENERI SERIE TV---------------
     }
+  },
+  mounted(){
+    this.films.forEach((item, index) => {
+      for (var i = 0; i < genreFilms.length; i++) {
+        if (item.genre_ids[0] = (this.genreFilms[i].id)) {
+          item.genre_ids[0] = this.genreFilms[i].name;
+        }
+      }
+    });
+
+    this.serie.forEach((item, index) => {
+      for (var i = 0; i < genreFilms.length; i++) {
+        if (item.genre_ids[0] = (this.genreSerie[i].id)) {
+          item.genre_ids[0] = this.genreSerie[i].name;
+        }
+      }
+    });
   }
 });
