@@ -46,6 +46,7 @@ var app = new Vue({
         result.data.results.forEach(item => {
           item.vote_average = Math.round(item.vote_average / 2);
         });
+        this.media = this.films.concat(this.serie);
         this.query = '';
         // -----------------FUNZIONI---------------------------
       })
@@ -60,7 +61,17 @@ var app = new Vue({
         }
       })
       .then((result) => {
-        this.genreFilms = result.data.results;
+        this.genreFilms = result.data.genres;
+        this.films.forEach((film, index) => {
+          film.genre_ids.forEach((id, i) => {
+            if (id == this.genreFilms.id) {
+              id = this.genreFilms.name;
+            }
+          });
+          this.$forceUpdate()
+        });
+
+        console.log(this.media);
       })
       .catch((error) => console.log('errore'));
       //-----------GENERI FILM---------------
@@ -73,32 +84,20 @@ var app = new Vue({
         }
       })
       .then((result) => {
-      this.genreSerie = result.data.results;
+        this.genreSerie = result.data.genres;
+        this.serie.forEach((tv, index) => {
+          tv.genre_ids.forEach((id, i) => {
+            if (id == this.genreSerie.id) {
+              id = this.genreSerie.name;
+            }
+          });
+          this.$forceUpdate()
+        });
+
+        console.log(this.media);
       })
       .catch((error) => console.log('errore'));
       //-----------GENERI SERIE TV---------------
-
-      this.films.forEach((film, index) => {
-        film.genre_ids.forEach((id, i) => {
-          if (id = this.genreFilms.id) {
-            id = this.genreFilms.name;
-          }
-        });
-        this.$forceUpdate()
-      });
-
-      this.serie.forEach((tv, index) => {
-        tv.genre_ids.forEach((id, i) => {
-          if (id = this.genreSerie.id) {
-            id = this.genreSerie.name;
-          }
-        });
-        this.$forceUpdate()
-      });
-
-      this.media = this.films.concat(this.serie);
-
-      console.log(this.media);
     }
   }
 });
