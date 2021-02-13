@@ -28,7 +28,7 @@
               <div class="nascosta">
                 <h2 v-if="film.title" class="title">{{film.title}}</h2>
                 <h2 v-else class="title">{{film.name}}</h2>
-                <h2>{{film.genre_ids}}</h2>
+                <span v-for="g in film.genre_ids">{{g}}</span>
                 <img :src="'img/' + film.original_language + '.png'" alt="lingua mancante" class="img-lingua">
                 <span class="voto">
                   <i v-for="star in (film.vote_average)" class="fas fa-star gialla"></i>
